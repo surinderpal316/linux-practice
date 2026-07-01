@@ -1,53 +1,76 @@
-DAY 1 - CONNECT LINUX WITH GITHUB USING SSH
+DAY 1 - CONNECT LINUX WITH GITHUB (COMPLETE GUIDE)
 
-Objective - Install Git - Configure Git - Generate an SSH key - Connect
-Linux to GitHub - Create a Git repository - Push your first project
+Objective - Install Git - Install GitHub CLI (gh) - Configure Git -
+Configure GitHub noreply email - Generate SSH key - Authenticate GitHub
+CLI - Create a GitHub repository from Linux - Push the first project -
+Troubleshoot common errors
 
-1.  Update the system sudo apt update sudo apt upgrade -y
+STEP 1 - Update the System sudo apt update sudo apt upgrade -y
 
-2.  Install Git sudo apt install git -y git –version
+STEP 2 - Install Required Packages sudo apt install git gh
+openssh-client curl wget vim -y
 
-3.  Configure Git git config –global user.name “surinderpal1316” git
-    config –global user.email “surinderbhaker@gmail.com” git config
-    –list
+Verify: git –version gh –version ssh -V
 
-4.  Generate SSH Key ssh-keygen -t ed25519 -C “surinderbhaker@gmail.com”
+STEP 3 - Configure Git git config –global user.name “surinderpal1316”
+git config –global user.email “surinderbhaker@gmail.com” git config
+–list
 
-Press Enter for the default location. Press Enter twice for an empty
-passphrase.
+STEP 4 - Authenticate GitHub CLI gh auth login
 
-5.  View Public Key cat ~/.ssh/id_ed25519.pub
+Choose: GitHub.com HTTPS Authenticate Git with GitHub credentials -> Yes
+Login with a web browser
 
-6.  Add the SSH key to GitHub GitHub -> Settings -> SSH and GPG Keys ->
-    New SSH Key Paste the copied key and save.
+Verify: gh auth status
 
-7.  Test Connection ssh -T git@github.com
+STEP 5 - Configure GitHub Private Email Open:
+https://github.com/settings/emails
 
-Expected: Hi surinderpal1316! You’ve successfully authenticated.
+Copy your GitHub noreply email and configure Git: git config –global
+user.email “YOUR_NOREPLY_EMAIL”
 
-8.  Create Project mkdir linux-practice cd linux-practice
+Verify: git config –global user.email
 
-9.  Initialize Git git init
+STEP 6 - Generate SSH Key ssh-keygen -t ed25519 -C “YOUR_NOREPLY_EMAIL”
 
-10. Create README echo “# Linux Practice” > README.md
+STEP 7 - Display Public Key cat ~/.ssh/id_ed25519.pub
 
-11. Commit git add . git commit -m “Initial commit”
+STEP 8 - Add SSH Key GitHub -> Settings -> SSH and GPG Keys -> New SSH
+Key
 
-12. Create a GitHub repository Repository name: linux-practice Do NOT
-    initialize it with a README.
+STEP 9 - Test SSH ssh -T git@github.com
 
-13. Connect the Remote Repository git remote add origin
-    git@github.com:surinderpal1316/linux-practice.git
+STEP 10 - Create Project mkdir linux-practice cd linux-practice
 
-14. Rename Branch git branch -M main
+STEP 11 - Initialize Git git init
 
-15. Push to GitHub git push -u origin main
+STEP 12 - Create README echo “# Linux Practice” > README.md
 
-Useful Commands pwd ls ls -la cd mkdir touch cat git status git log git
-add . git commit -m “message” git push git pull
+STEP 13 - Commit git add . git commit -m “Initial commit”
 
-What I Learned - Installed Git - Configured Git - Generated an SSH key -
-Connected Linux to GitHub - Created a Git repository - Pushed the first
-project to GitHub
+STEP 14 - Create Repository gh repo create linux-practice –public
+–source=. –remote=origin –push
 
+STEP 15 - Verify git remote -v git status git log –oneline
 
+COMMON ERRORS
+
+Repository not found: gh repo create linux-practice –public –source=.
+–remote=origin –push
+
+Current directory is not a Git repository: git init
+
+Remote already exists: git remote remove origin git remote add origin
+git@github.com:surinderpal1316/linux-practice.git
+
+GH007 Private Email Error: git config –global user.email
+“YOUR_NOREPLY_EMAIL” git commit –amend –reset-author –no-edit git push
+-u origin main
+
+USEFUL COMMANDS pwd ls ls -la cd mkdir touch cp mv rm cat vim git status
+git log git add . git commit -m “message” git push git pull git remote
+-v gh auth status gh repo list
+
+SKILLS LEARNED - Git installation - GitHub CLI - GitHub authentication -
+SSH authentication - Git repository creation - Git push -
+Troubleshooting GitHub errors
