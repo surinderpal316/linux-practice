@@ -1,0 +1,53 @@
+DAY 1 - CONNECT LINUX WITH GITHUB USING SSH
+
+Objective - Install Git - Configure Git - Generate an SSH key - Connect
+Linux to GitHub - Create a Git repository - Push your first project
+
+1.  Update the system sudo apt update sudo apt upgrade -y
+
+2.  Install Git sudo apt install git -y git –version
+
+3.  Configure Git git config –global user.name “surinderpal1316” git
+    config –global user.email “surinderbhaker@gmail.com” git config
+    –list
+
+4.  Generate SSH Key ssh-keygen -t ed25519 -C “surinderbhaker@gmail.com”
+
+Press Enter for the default location. Press Enter twice for an empty
+passphrase.
+
+5.  View Public Key cat ~/.ssh/id_ed25519.pub
+
+6.  Add the SSH key to GitHub GitHub -> Settings -> SSH and GPG Keys ->
+    New SSH Key Paste the copied key and save.
+
+7.  Test Connection ssh -T git@github.com
+
+Expected: Hi surinderpal1316! You’ve successfully authenticated.
+
+8.  Create Project mkdir linux-practice cd linux-practice
+
+9.  Initialize Git git init
+
+10. Create README echo “# Linux Practice” > README.md
+
+11. Commit git add . git commit -m “Initial commit”
+
+12. Create a GitHub repository Repository name: linux-practice Do NOT
+    initialize it with a README.
+
+13. Connect the Remote Repository git remote add origin
+    git@github.com:surinderpal1316/linux-practice.git
+
+14. Rename Branch git branch -M main
+
+15. Push to GitHub git push -u origin main
+
+Useful Commands pwd ls ls -la cd mkdir touch cat git status git log git
+add . git commit -m “message” git push git pull
+
+What I Learned - Installed Git - Configured Git - Generated an SSH key -
+Connected Linux to GitHub - Created a Git repository - Pushed the first
+project to GitHub
+
+
