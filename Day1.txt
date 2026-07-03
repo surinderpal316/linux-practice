@@ -1,1 +1,79 @@
+
+
+DAY 1 - CONNECT LINUX WITH GITHUB (COMPLETE GUIDE)
+
+Objective - Install Git - Install GitHub CLI (gh) - Configure Git -
+Configure GitHub noreply email - Generate SSH key - Authenticate GitHub
+CLI - Create a GitHub repository from Linux - Push the first project -
+Troubleshoot common errors
+
+STEP 1 - Update the System sudo apt update sudo apt upgrade -y
+
+STEP 2 - Install Required Packages sudo apt install git gh
+openssh-client curl wget vim -y
+
+Verify: git –version gh –version ssh -V
+
+STEP 3 - Configure Git git config –global user.name “surinderpal1316”
+git config –global user.email “surinderbhaker@gmail.com” git config
+–list
+
+STEP 4 - Authenticate GitHub CLI gh auth login
+
+Choose: GitHub.com HTTPS Authenticate Git with GitHub credentials -> Yes
+Login with a web browser
+
+Verify: gh auth status
+
+STEP 5 - Configure GitHub Private Email Open:
+https://github.com/settings/emails
+
+Copy your GitHub noreply email and configure Git: git config –global
+user.email “YOUR_NOREPLY_EMAIL”
+
+Verify: git config –global user.email
+
+STEP 6 - Generate SSH Key ssh-keygen -t ed25519 -C “YOUR_NOREPLY_EMAIL”
+
+STEP 7 - Display Public Key cat ~/.ssh/id_ed25519.pub
+
+STEP 8 - Add SSH Key GitHub -> Settings -> SSH and GPG Keys -> New SSH
+Key
+
+STEP 9 - Test SSH ssh -T git@github.com
+
+STEP 10 - Create Project mkdir linux-practice cd linux-practice
+
+STEP 11 - Initialize Git git init
+
+STEP 12 - Create README echo “# Linux Practice” > README.md
+
+STEP 13 - Commit git add . git commit -m “Initial commit”
+
+STEP 14 - Create Repository gh repo create linux-practice –public
+–source=. –remote=origin –push
+
+STEP 15 - Verify git remote -v git status git log –oneline
+
+COMMON ERRORS
+
+Repository not found: gh repo create linux-practice –public –source=.
+–remote=origin –push
+
+Current directory is not a Git repository: git init
+
+Remote already exists: git remote remove origin git remote add origin
+git@github.com:surinderpal1316/linux-practice.git
+
+GH007 Private Email Error: git config –global user.email
+“YOUR_NOREPLY_EMAIL” git commit –amend –reset-author –no-edit git push
+-u origin main
+
+USEFUL COMMANDS pwd ls ls -la cd mkdir touch cp mv rm cat vim git status
+git log git add . git commit -m “message” git push git pull git remote
+-v gh auth status gh repo list
+
+SKILLS LEARNED - Git installation - GitHub CLI - GitHub authentication -
+SSH authentication - Git repository creation - Git push -
+Troubleshooting GitHub errors
 .
