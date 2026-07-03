@@ -1,0 +1,85 @@
+# Check current directory
+pwd
+
+# List files
+ls
+
+# List all files (including hidden)
+ls -la
+
+# Go to home directory
+cd ~
+
+# Create Day-02 project
+mkdir Day-02
+cd Day-02
+
+# Create directories
+mkdir docs
+mkdir scripts
+mkdir backup
+
+# Verify
+ls
+
+# Create files
+touch notes.txt
+touch commands.txt
+touch practice.txt
+
+# Verify
+ls -l
+
+# Add text to files
+echo "Linux Day 2 Practice" > notes.txt
+echo "Basic Linux Commands" > commands.txt
+echo "Practice File" > practice.txt
+
+# View file contents
+cat notes.txt
+cat commands.txt
+cat practice.txt
+
+# Append text
+echo "Learning Linux File Management" >> notes.txt
+
+# View updated file
+cat notes.txt
+
+# Copy file
+cp notes.txt backup.txt
+
+# Copy directory
+cp -r docs backup
+
+# Rename file
+mv commands.txt linux-commands.txt
+
+# Move file
+mv linux-commands.txt docs/
+
+# Verify
+tree
+# If tree is not installed:
+ls -R
+
+# Find file
+find . -name "notes.txt"
+
+# Display history
+history
+
+# Delete file
+rm practice.txt
+
+# Delete empty directory
+rmdir scripts
+
+# Delete directory with contents
+rm -r backup
+
+# Final verification
+pwd
+ls -la
+
+
