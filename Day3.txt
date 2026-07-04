@@ -1,0 +1,140 @@
+DAY 3 - LINUX PERMISSIONS (COMMANDS WITH EXPLANATION)
+
+1.  ls -l Purpose: Displays files with permissions, owner, group, size
+    and date.
+
+Example: ls -l
+
+Example Output: -rwxr-xr– 1 root root 120 Jul 6 script.sh
+
+Explanation: - = Regular file rwx = Owner permissions r-x = Group
+permissions r– = Others permissions
+
+------------------------------------------------------------------------
+
+2.  chmod Purpose: Changes file or directory permissions.
+
+Example: chmod 755 script.sh
+
+Result: Owner = Read, Write, Execute Group = Read, Execute Others =
+Read, Execute
+
+------------------------------------------------------------------------
+
+3.  chmod 644 notes.txt
+
+Purpose: Sets read/write for owner and read-only for everyone else.
+
+Result: Owner = rw- Group = r– Others = r–
+
+------------------------------------------------------------------------
+
+4.  chmod +x script.sh
+
+Purpose: Adds execute permission.
+
+Example: chmod +x script.sh
+
+Result: The file can now be executed.
+
+Run: ./script.sh
+
+------------------------------------------------------------------------
+
+5.  chmod -x script.sh
+
+Purpose: Removes execute permission.
+
+Result: The script can no longer be executed directly.
+
+------------------------------------------------------------------------
+
+6.  chown
+
+Purpose: Changes the owner of a file.
+
+Example: sudo chown surinder notes.txt
+
+Result: Ownership changes to user ‘surinder’.
+
+------------------------------------------------------------------------
+
+7.  chgrp
+
+Purpose: Changes the group of a file.
+
+Example: sudo chgrp developers notes.txt
+
+Result: The file belongs to the ‘developers’ group.
+
+------------------------------------------------------------------------
+
+8.  stat
+
+Purpose: Displays detailed file information.
+
+Example: stat notes.txt
+
+Shows: - File size - Owner - Group - Permissions - Creation, access and
+modification times
+
+------------------------------------------------------------------------
+
+9.  umask
+
+Purpose: Shows the default permissions assigned to new files.
+
+Example: umask
+
+Example Output: 0022
+
+------------------------------------------------------------------------
+
+10. touch
+
+Purpose: Creates an empty file.
+
+Example: touch notes.txt
+
+------------------------------------------------------------------------
+
+11. mkdir
+
+Purpose: Creates a directory.
+
+Example: mkdir Day-03
+
+------------------------------------------------------------------------
+
+12. echo
+
+Purpose: Writes text into a file.
+
+Example: echo “Hello Linux” > hello.txt
+
+Append text: echo “Day 3” >> hello.txt
+
+------------------------------------------------------------------------
+
+13. cat
+
+Purpose: Displays file contents.
+
+Example: cat hello.txt
+
+------------------------------------------------------------------------
+
+14. Practice
+
+mkdir Day-03 cd Day-03 touch notes.txt echo “Linux Permissions
+Practice” > notes.txt touch script.sh echo ‘echo Hello Linux’ >
+script.sh ls -l chmod 644 notes.txt chmod 755 script.sh chmod +x
+script.sh ./script.sh stat notes.txt stat script.sh
+
+Expected Result: - notes.txt has 644 permissions. - script.sh has
+execute permission. - script.sh prints “Hello Linux”. - stat displays
+detailed file information.
+
+Skills Learned: - ls -l - chmod - chown - chgrp - stat - umask - touch -
+mkdir - echo - cat
+
